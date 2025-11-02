@@ -9,9 +9,9 @@ BENCHMARKS_DIR="benchmarks"
 run_elixir_benchmark() {
     local benchmark_name="$1"
     local benchmark_input="$2"
-
+    
     local i # Loop variable
-
+    
     for ((i=1; i<=RUNS_PER_BENCHMARK; i++)); do
         mix run $BENCHMARKS_DIR/$benchmark_name $benchmark_input 2>&1
     done
@@ -34,36 +34,37 @@ BENCH="dot_product.ex"
 for INPUT in $INPUTS; do
     run_elixir_benchmark "$BENCH" "$INPUT"
 done
-echo "" 
+echo ""
 
 # ------------------ Julia Benchmark ------------------
-INPUTS="7424 9472 11520"
+INPUTS="512 1024 2048" # Test values
+# INPUTS="7424 9472 11520" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
-echo -e "Julia (JL) benchmark\n" 
+echo -e "Julia (JL) benchmark\n"
 
 BENCH="julia.ex"
 for INPUT in $INPUTS; do
     run_elixir_benchmark "$BENCH" "$INPUT"
 done
-echo "" 
+echo ""
 
 # ------------------ MM Benchmarks ------------------
 INPUTS="128 256 512" # Test values
 # INPUTS="11000 13000 15000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
-echo -e "Matrix Multiplication (MM) benchmark\n" 
+echo -e "Matrix Multiplication (MM) benchmark\n"
 
 BENCH="mm.ex"
 for INPUT in $INPUTS; do
     run_elixir_benchmark "$BENCH" "$INPUT"
 done
-echo "" 
+echo ""
 
 # ------------------ NBody Benchmarks ------------------
 INPUTS="128 256 512" # Test values
 # INPUTS="600000 800000 1000000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
-echo -e "nBodies (NB) benchmark\n" 
+echo -e "nBodies (NB) benchmark\n"
 
 BENCH="nbodies.ex"
 for INPUT in $INPUTS; do
@@ -75,7 +76,7 @@ echo ""
 INPUTS="1024 2048 4096" # Test values
 # INPUTS="100000 200000 300000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
-echo -e "Nearest Neighbor (NN) benchmark\n" 
+echo -e "Nearest Neighbor (NN) benchmark\n"
 
 BENCH="nearest_neighbor.ex"
 for INPUT in $INPUTS; do
@@ -84,14 +85,15 @@ done
 echo ""
 
 # ------------------ Raytracer Benchmarks ------------------
-INPUTS="7424 9472 11520"
+INPUTS="512 1024 2048" # Test values
+# INPUTS="7424 9472 11520" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
-echo -e "Raytracer (RT) benchmark\n" 
+echo -e "Raytracer (RT) benchmark\n"
 
 BENCH="raytracer.ex"
 for INPUT in $INPUTS; do
     run_elixir_benchmark "$BENCH" "$INPUT"
 done
-echo "" 
+echo ""
 
 # ------------------ Script End ------------------
