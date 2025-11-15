@@ -26,7 +26,7 @@ echo ""  # Add a blank line for readability
 
 # ------------------ Dot Product Benchmark ------------------
 # INPUTS="1024 2048 4096" # Test values
-INPUTS="400000 600000 800000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="400000000 500000000 600000000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "Dot Product (DP) benchmark\n"
 
@@ -38,7 +38,7 @@ echo ""
 
 # ------------------ Julia Benchmark ------------------
 # INPUTS="512 1024 2048" # Test values
-INPUTS="7424 9472 11520" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="7168 9216 11264" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "Julia (JL) benchmark\n"
 
@@ -50,7 +50,7 @@ echo ""
 
 # ------------------ MM Benchmarks ------------------
 # INPUTS="128 256 512" # Test values
-INPUTS="11000 13000 15000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="5000 7000 9000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "Matrix Multiplication (MM) benchmark\n"
 
@@ -62,7 +62,7 @@ echo ""
 
 # ------------------ NBody Benchmarks ------------------
 # INPUTS="128 256 512" # Test values
-INPUTS="600000 800000 1000000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="100000 200000 400000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "nBodies (NB) benchmark\n"
 
@@ -86,7 +86,7 @@ echo ""
 
 # ------------------ Raytracer Benchmarks ------------------
 # INPUTS="512 1024 2048" # Test values
-INPUTS="7424 9472 11520" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="7168 9216 11264" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "Raytracer (RT) benchmark\n"
 
