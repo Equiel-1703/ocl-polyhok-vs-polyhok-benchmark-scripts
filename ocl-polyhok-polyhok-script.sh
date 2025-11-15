@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RUNS_PER_BENCHMARK=1 # CHANGE TO 30 LATER ----------------------------------------------------<<<
+RUNS_PER_BENCHMARK=30 # CHANGE TO 30 LATER ----------------------------------------------------<<<
 
 # Define directories for benchmarks
 BENCHMARKS_DIR="benchmarks"
