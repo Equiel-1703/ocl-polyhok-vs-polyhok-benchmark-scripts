@@ -74,7 +74,7 @@ echo ""
 
 # ------------------ Nearest Neighbor Benchmarks ------------------
 # INPUTS="1024 2048 4096" # Test values
-INPUTS="100000 200000 300000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
+INPUTS="100000000 200000000 300000000" # CHANGE TO THIS LATER ----------------------------------------------------<<<
 
 echo -e "Nearest Neighbor (NN) benchmark\n"
 
