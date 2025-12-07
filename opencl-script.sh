@@ -4,21 +4,32 @@ RUNS_PER_BENCHMARK=2 # CHANGE TO 30 LATER --------------------------------------
 
 # Define directories for benchmarks
 BENCHMARKS_DIR="benchmarks"
+OPENCL_BENCHMARKS_DIR="$BENCHMARKS_DIR/opencl"
 
 # --- Functions for running benchmarks ---
-run_elixir_benchmark() {
+run_OpenCL_benchmark() {
     local benchmark_name="$1"
     local benchmark_input="$2"
     
+    local output_name="${benchmark_name%.cpp}.out"
+    
+    # Check if the compiled file does not exist
+    if [ ! -f "$OPENCL_BENCHMARKS_DIR/$output_name" ]; then
+        # Compile the OpenCL benchmark if it does not exist
+        g++ -o "$OPENCL_BENCHMARKS_DIR/$output_name" "$OPENCL_BENCHMARKS_DIR/$benchmark_name" -lOpenCL
+    fi
+    
     local i # Loop variable
     
+    # Run the compiled OpenCL benchmark
     for ((i=1; i<=RUNS_PER_BENCHMARK; i++)); do
-        mix run $BENCHMARKS_DIR/$benchmark_name $benchmark_input 2>&1
+        "./$OPENCL_BENCHMARKS_DIR/$output_name" $benchmark_input 2>&1
     done
 }
 
+
 # ------------------ Script Start ------------------
-echo -e "- $(basename "$PWD") Benchmarks Results -"
+echo -e "- OpenCL Benchmarks Results -"
 date
 echo -e "Tests conducted by: Andre R. Du Bois & Henrique G. Rodrigues\n"
 echo -e "Runs per benchmark: $RUNS_PER_BENCHMARK\n"
@@ -30,9 +41,9 @@ INPUTS="1024 2048 4096" # Test values
 
 echo -e "Dot Product (DP) benchmark\n"
 
-BENCH="dot_product.ex"
+BENCH="dot_product.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
@@ -42,9 +53,9 @@ INPUTS="512 1024 2048" # Test values
 
 echo -e "Julia (JL) benchmark\n"
 
-BENCH="julia.ex"
+BENCH="julia.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
@@ -54,9 +65,9 @@ INPUTS="128 256 512" # Test values
 
 echo -e "Matrix Multiplication (MM) benchmark\n"
 
-BENCH="mm.ex"
+BENCH="mm.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
@@ -66,9 +77,9 @@ INPUTS="128 256 512" # Test values
 
 echo -e "nBodies (NB) benchmark\n"
 
-BENCH="nbodies.ex"
+BENCH="nbodies.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
@@ -78,9 +89,9 @@ INPUTS="1024 2048 4096" # Test values
 
 echo -e "Nearest Neighbor (NN) benchmark\n"
 
-BENCH="nearest_neighbor.ex"
+BENCH="nearest_neighbor.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
@@ -90,9 +101,9 @@ INPUTS="512 1024 2048" # Test values
 
 echo -e "Raytracer (RT) benchmark\n"
 
-BENCH="raytracer.ex"
+BENCH="raytracer.cpp"
 for INPUT in $INPUTS; do
-    run_elixir_benchmark "$BENCH" "$INPUT"
+    run_OpenCL_benchmark "$BENCH" "$INPUT"
 done
 echo ""
 
